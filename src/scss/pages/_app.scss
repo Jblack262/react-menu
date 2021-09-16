@@ -1,0 +1,43 @@
+.App {
+  margin-top: 3rem;
+}
+
+.menuContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size: 3rem;
+  position: relative;
+  font-weight: bold;
+  text-align: center;
+  &::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 5px;
+    background-color: #f39c12;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-block: 1rem 3rem;
+  .btn {
+    color: #f39c12;
+    border: none;
+    background: none;
+    font-size: 1.2rem;
+    padding: 0.5rem 0.75rem;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

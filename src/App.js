@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { React, useState } from 'react';
+
+import {data} from './util/data';
+import MenuItem from './components/menuItem';
 
 function App() {
+  const [menu, setMenu] = useState(data);
+
+  const filterData = (description) => {
+    let newMenu = data.filter(item => item.category === description);
+    !description ? setMenu(data) : setMenu(newMenu);
+    // console.log(newMenu)
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 className="title">Our Menu</h1>
+      <div className="navigation">
+        <button onClick={() => filterData()} className="btn">All</button>
+        <button onClick={() => filterData("breakfast")} className="btn">Breakfast</button>
+        <button onClick={() => filterData("lunch")} className="btn">Lunch</button>
+        <button onClick={() => filterData("shakes")} className="btn">Shakes</button>
+      </div>
+      <div className="menuContainer">
+        {menu.map(item => {
+          return (
+            <MenuItem key={item.id} item={item}/>
+          )
+        })}
+      </div>
     </div>
   );
 }
